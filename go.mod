@@ -1,3 +1,3 @@
-module darker/xiao/test
+module legendaryTrain
 
 go 1.13
