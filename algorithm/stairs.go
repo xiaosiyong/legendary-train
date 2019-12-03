@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 /*
 N 个台阶 每次可以走一步 也可以走两步 问总共有多少种走法

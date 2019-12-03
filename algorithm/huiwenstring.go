@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 /*
 1、单链表存储字符串，判断是否是回文字符串
@@ -48,7 +48,7 @@ func CheckIsHuiWenString(head *SinglyLinkedList) bool {
 	} else {
 		t = ReverseNode(m.Next)
 	}
-	return IsNodeEqual(head, t)
+	return isNodeEqual(head, t)
 }
 
 //反转链表
@@ -69,7 +69,7 @@ loop:
 }
 
 //原链表、折半之后的链表
-func IsNodeEqual(node1 *SinglyLinkedList, node2 *SinglyLinkedList) bool {
+func isNodeEqual(node1 *SinglyLinkedList, node2 *SinglyLinkedList) bool {
 	if node1 == nil && node2 == nil {
 		return true
 	}

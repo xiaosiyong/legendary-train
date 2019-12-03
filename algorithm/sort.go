@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 //插入排序
 func InsertSort(a []int, n int) []int {
@@ -126,7 +126,7 @@ func BucketSort(a []int) []int {
 }
 
 //计数排序
-func CountSort(a []int)[]int{
+func CountSort(a []int) []int {
 	max := 0
 	l := len(a)
 	min := 0
@@ -139,14 +139,14 @@ func CountSort(a []int)[]int{
 		}
 	}
 
-	t := make([]int,max - min + 1)
+	t := make([]int, max-min+1)
 	for i := 0; i < l; i++ {
 		t[a[i]] += 1
 	}
 	j := 0
-	for i := 0; i < max - min + 1; i++{
+	for i := 0; i < max-min+1; i++ {
 		for t[i] > 0 {
-			a[j]=i
+			a[j] = i
 			j++
 			t[i]--
 		}
@@ -205,8 +205,5 @@ func partitionMax(a []int, lo, hi int) int {
 	return i
 }
 
-
-
 type Graph struct {
-
 }

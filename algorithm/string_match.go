@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 //字符串匹配算法
 
@@ -97,33 +97,32 @@ func RK(mainBytes []byte, searchBytes []byte) (index int) {
 	return index
 }
 
-
-func KMP(m []byte,s []byte,ml,sl int)int{
-	nexts := kmpGetNext(s,sl)
+func KMP(m []byte, s []byte, ml, sl int) int {
+	nexts := kmpGetNext(s, sl)
 	j := 0
-	for i := 0; i < ml; i++{
-		for j > 0 && m[i]!=s[j]{//一直找到a[i]和b[j]
-			j = nexts[j - 1] + 1
+	for i := 0; i < ml; i++ {
+		for j > 0 && m[i] != s[j] { //一直找到a[i]和b[j]
+			j = nexts[j-1] + 1
 		}
-		if m[i] == s[j]{
+		if m[i] == s[j] {
 			j++
 		}
 		if j == sl {
-			return i - sl +1
+			return i - sl + 1
 		}
 	}
 	return -1
 }
 
-func kmpGetNext(s []byte,sl int)[]int{
-	next := make([]int,sl)
+func kmpGetNext(s []byte, sl int) []int {
+	next := make([]int, sl)
 	next[0] = -1
 	k := -1
 	for i := 1; i < sl; i++ {
-		for k != -1 && s[k+1]!= s[i] {
+		for k != -1 && s[k+1] != s[i] {
 			k = next[k]
 		}
-		if s[k + 1] == s[i]{
+		if s[k+1] == s[i] {
 			k++
 		}
 		next[i] = k

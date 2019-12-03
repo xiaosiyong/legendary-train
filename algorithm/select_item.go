@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 //1,2,3,4,5,5,5,7,8,9
 func SelectFirstIndexOfItem(a []int, n, b int) int {

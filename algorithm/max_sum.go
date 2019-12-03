@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 //最大子序和
 

@@ -1,4 +1,4 @@
-package AlgorithmLearn
+package algorithm
 
 type ArrayQueue struct {
 	Size  int

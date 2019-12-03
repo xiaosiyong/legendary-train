@@ -1,4 +1,4 @@
-package DataStruct
+package datastruct
 
 import (
 	"github.com/cheekybits/genny/generic"
@@ -21,7 +21,7 @@ type Item generic.Type
 
 type Node struct {
 	content Item
-	next *Node
+	next    *Node
 }
 
 type ItemLinkedList struct {
@@ -30,13 +30,12 @@ type ItemLinkedList struct {
 	lock sync.RWMutex
 }
 
-
 func (list *ItemLinkedList) Append(t Item) {
 	list.lock.Lock()
-	node := &Node{content:t}
+	node := &Node{content: t}
 	if list.head == nil {
 		list.head = node
-	}else{
+	} else {
 		cur := list.head
 		if cur.next != nil {
 			cur = cur.next
@@ -47,17 +46,17 @@ func (list *ItemLinkedList) Append(t Item) {
 	list.lock.Unlock()
 }
 
-func (list *ItemLinkedList) Insert(i int,item Item) error {
+func (list *ItemLinkedList) Insert(i int, item Item) error {
 	list.lock.Lock()
 	defer list.lock.Lock()
-	node := &Node{content:item}
+	node := &Node{content: item}
 	if i == 1 {
 		node.next = list.head
 	}
 	return nil
 }
 
-func (list *ItemLinkedList) Reverse(){
+func (list *ItemLinkedList) Reverse() {
 	p := list.head
 	q := list.head.next
 	list.head.next = nil
@@ -69,5 +68,3 @@ func (list *ItemLinkedList) Reverse(){
 	}
 	list.head = p
 }
-
-
