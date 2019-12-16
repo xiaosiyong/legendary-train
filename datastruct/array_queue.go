@@ -1,4 +1,4 @@
-package algorithm
+package datastruct
 
 type ArrayQueue struct {
 	Size  int
@@ -14,13 +14,6 @@ type CircleQueue struct {
 	Tail  int
 }
 
-func InitCircleQueue(l int) *CircleQueue {
-	return &CircleQueue{
-		Size:  l,
-		Items: make([]string, l),
-	}
-}
-
 func InitQueue(l int) *ArrayQueue {
 	return &ArrayQueue{
 		Size:  l,
@@ -28,7 +21,7 @@ func InitQueue(l int) *ArrayQueue {
 	}
 }
 
-//入栈
+//入队
 func (a *ArrayQueue) Enqueue(s string) bool {
 	if a.Tail == a.Size {
 		if a.Head == 0 {
@@ -43,6 +36,23 @@ func (a *ArrayQueue) Enqueue(s string) bool {
 	a.Items[a.Tail] = s
 	a.Tail++
 	return true
+}
+
+//出队
+func (a *ArrayQueue) Dequeue() string {
+	if a.Head == a.Tail {
+		return ""
+	}
+	s := a.Items[a.Head]
+	a.Head++
+	return s
+}
+
+func InitCircleQueue(l int) *CircleQueue {
+	return &CircleQueue{
+		Size:  l,
+		Items: make([]string, l),
+	}
 }
 
 func (a *CircleQueue) Enqueue(s string) bool {
@@ -61,14 +71,4 @@ func (a *CircleQueue) Dequeue() string {
 	str := a.Items[a.Head]
 	a.Head = (a.Head + 1) % a.Size
 	return str
-}
-
-//出栈
-func (a *ArrayQueue) Dequeue() string {
-	if a.Head == a.Tail {
-		return ""
-	}
-	s := a.Items[a.Head]
-	a.Head++
-	return s
 }

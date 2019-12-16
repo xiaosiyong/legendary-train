@@ -2,13 +2,13 @@ package test
 
 import (
 	"fmt"
-	"legendaryTrain/algorithm"
+	"legendaryTrain/datastruct"
 	"testing"
 )
 
 func TestEnqueue(t *testing.T) {
 	fmt.Println("开始测试队列：")
-	q := algorithm.InitQueue(9)
+	q := datastruct.InitQueue(9)
 	q.Enqueue("001")
 	q.Enqueue("002")
 	q.Enqueue("003")

@@ -1,7 +1,9 @@
 package datastruct
 
 import (
+	"fmt"
 	"github.com/cheekybits/genny/generic"
+	"strconv"
 	"sync"
 )
 
@@ -30,6 +32,14 @@ type ItemLinkedList struct {
 	lock sync.RWMutex
 }
 
+func InitItemLinkedList() *ItemLinkedList {
+	return &ItemLinkedList{
+		head: nil,
+		size: 0,
+		lock: sync.RWMutex{},
+	}
+}
+
 func (list *ItemLinkedList) Append(t Item) {
 	list.lock.Lock()
 	node := &Node{content: t}
@@ -37,7 +47,7 @@ func (list *ItemLinkedList) Append(t Item) {
 		list.head = node
 	} else {
 		cur := list.head
-		if cur.next != nil {
+		for cur.next != nil {
 			cur = cur.next
 		}
 		cur.next = node
@@ -46,25 +56,144 @@ func (list *ItemLinkedList) Append(t Item) {
 	list.lock.Unlock()
 }
 
-func (list *ItemLinkedList) Insert(i int, item Item) error {
+func (list *ItemLinkedList) Insert(i int, item Item) bool {
 	list.lock.Lock()
-	defer list.lock.Lock()
+	defer list.lock.Unlock()
 	node := &Node{content: item}
+	if i > list.size { //直接
+		return false
+	}
 	if i == 1 {
 		node.next = list.head
+		list.head = node
+		list.size++
+		return true
+	} else {
+		cur := list.head
+		for t := 1; t < i-1; t++ {
+			cur = cur.next
+		}
+		node.next = cur.next
+		cur.next = node
+		list.size++
+		return true
 	}
-	return nil
 }
 
 func (list *ItemLinkedList) Reverse() {
 	p := list.head
 	q := list.head.next
 	list.head.next = nil
-	if q != nil {
+	for q != nil {
 		r := q.next
 		q.next = p
 		p = q
 		q = r
 	}
 	list.head = p
+}
+
+func (list *ItemLinkedList) RemoveAt(i int) {
+	if list.size > i {
+		cur := list.head
+		for t := 1; t < i-1; t++ {
+			cur = cur.next
+		}
+		cur.next = cur.next.next
+		list.size--
+	}
+}
+
+func (list *ItemLinkedList) IndexOf(i int) Item {
+	if list.size < i {
+		return nil
+	}
+	t := list.head
+	for j := 1; j < i; j++ {
+		t = t.next
+	}
+	return t.content
+}
+
+func (list *ItemLinkedList) IsEmpty() bool {
+	return list.head == nil
+}
+
+func (list *ItemLinkedList) Print() {
+	if list.head == nil {
+		fmt.Println("link is nil")
+		return
+	}
+	if list.size == 1 {
+		fmt.Println(list.head.content)
+		return
+	}
+	temp := list.head.content.(string)
+	cur := list.head
+	for cur.next != nil {
+		temp = temp + " " + cur.next.content.(string)
+		cur = cur.next
+	}
+	fmt.Println("The size:[", list.size, "]", temp)
+}
+
+//TODO 检测链表中是否存在环
+func CheckIsCircleInLinkList(item *ItemLinkedList) bool {
+	return false
+}
+
+//有序链表合并
+func MergeSortedLinkList(item1, item2 *ItemLinkedList) *ItemLinkedList {
+	result := &ItemLinkedList{}
+	if item1.head != nil && item2.head != nil {
+		p := item1.head
+		q := item2.head
+		for p != nil && q != nil {
+			i1, _ := strconv.Atoi(p.content.(string))
+			i2, _ := strconv.Atoi(q.content.(string))
+			if i1 < i2 {
+				result.Append(p.content.(string))
+				p = p.next
+			} else {
+				result.Append(q.content.(string))
+				q = q.next
+			}
+		}
+		for p != nil {
+			result.Append(p.content.(string))
+			p = p.next
+		}
+		for q != nil {
+			result.Append(q.content.(string))
+			q = q.next
+		}
+
+	}
+	return result
+}
+
+//删除倒数第N个节点
+func (list *ItemLinkedList) DeleteReverseNNode(n int) {
+	if list.size > n {
+		cur := list.head
+		for i := 1; i < list.size-n; i++ {
+			cur = cur.next
+		}
+		cur.next = cur.next.next
+		list.size--
+	}
+}
+
+//找出中间结点
+func (list *ItemLinkedList) FindMiddleNode() Item {
+	if list.size < 2 {
+		return list.head.content
+	}
+	p := list.head
+	q := list.head
+	for q != nil && q.next != nil {
+		p = p.next
+		q = q.next.next
+	}
+	return p.content
 }

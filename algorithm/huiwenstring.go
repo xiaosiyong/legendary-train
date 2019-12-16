@@ -11,7 +11,8 @@ type SinglyLinkedList struct {
 	Next *SinglyLinkedList
 }
 
-type Element interface{}
+//
+//type Element interface{}
 
 //将字符串转成链表
 func InsertStringToList(input string) *SinglyLinkedList {
@@ -51,23 +52,6 @@ func CheckIsHuiWenString(head *SinglyLinkedList) bool {
 	return isNodeEqual(head, t)
 }
 
-//反转链表
-func ReverseNode(node *SinglyLinkedList) *SinglyLinkedList {
-	if node == nil || node.Next == nil {
-		return node
-	}
-	var temp *SinglyLinkedList
-loop:
-	if node != nil {
-		cur := node.Next
-		node.Next = temp
-		temp = node
-		node = cur
-		goto loop
-	}
-	return temp
-}
-
 //原链表、折半之后的链表
 func isNodeEqual(node1 *SinglyLinkedList, node2 *SinglyLinkedList) bool {
 	if node1 == nil && node2 == nil {
@@ -83,6 +67,54 @@ loop:
 		goto loop
 	}
 	return node2 == nil
+}
+
+//将单链表转成字符串
+func SingleLinkedListToString(list *SinglyLinkedList) string {
+	//链表为空
+	if list == nil {
+		return ""
+	}
+	//只有一个元素
+	if list.Next == nil {
+		return list.Data
+	}
+	//循环追加
+	p := list
+	str := p.Data
+forLabel:
+	if p.Next != nil {
+		str = str + p.Next.Data
+		p = p.Next
+		goto forLabel
+	}
+	return str
+}
+
+//反转链表
+func ReverseNode(node *SinglyLinkedList) *SinglyLinkedList {
+	if node == nil || node.Next == nil {
+		return node
+	}
+	var temp *SinglyLinkedList
+	for node.Next != nil {
+		cur := node.Next
+		node.Next = temp
+		temp = node
+		node = cur
+	}
+	return temp
+}
+
+//递归反转单链表
+func ReverseNodeByRecursion(head *SinglyLinkedList) *SinglyLinkedList {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	nextNode := ReverseNodeByRecursion(head.Next)
+	head.Next.Next = head
+	head.Next = nil
+	return nextNode
 }
 
 //查找链表中间节点
@@ -106,26 +138,4 @@ loop:
 	}
 
 	return p, i
-}
-
-//将单链表转成字符串
-func SingleLinkedListToString(list *SinglyLinkedList) string {
-	//链表为空
-	if len(list.Data) < 1 {
-		return ""
-	}
-	//只有一个元素
-	if list.Next == nil {
-		return list.Data
-	}
-	//循环追加
-	p := list
-	str := p.Data
-forLabel:
-	if p.Next != nil {
-		str = str + p.Next.Data
-		p = p.Next
-		goto forLabel
-	}
-	return str
 }
