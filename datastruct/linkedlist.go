@@ -139,6 +139,17 @@ func (list *ItemLinkedList) Print() {
 
 //TODO 检测链表中是否存在环
 func CheckIsCircleInLinkList(item *ItemLinkedList) bool {
+	if item.head != nil {
+		quick := item.head
+		slow := item.head
+		for quick != nil && quick.next != nil {
+			quick = quick.next.next
+			slow = slow.next
+			if quick == slow {
+				return true
+			}
+		}
+	}
 	return false
 }
 
