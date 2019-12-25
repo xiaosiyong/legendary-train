@@ -137,6 +137,39 @@ func (list *ItemLinkedList) Print() {
 	fmt.Println("The size:[", list.size, "]", temp)
 }
 
+func IsPalindrome(item *ItemLinkedList)bool {
+	if item.IsEmpty() || item.head.next == nil {
+		return true
+	}
+	fast := item.head
+	slow := item.head
+
+	var pre,temp  *Node
+	for fast != nil && fast.next != nil {
+		fast = fast.next.next
+
+		temp = slow.next
+		slow.next = pre
+		pre = slow
+		slow = temp
+
+	}
+	if fast != nil {
+		slow = slow.next
+	}
+
+	for slow != nil && pre != nil && pre.content == slow.content {
+		slow = slow.next
+		pre = pre.next
+	}
+
+	return slow == nil && pre == nil
+}
+
+
+
+
+
 //TODO 检测链表中是否存在环
 func CheckIsCircleInLinkList(item *ItemLinkedList) bool {
 	if item.head != nil {

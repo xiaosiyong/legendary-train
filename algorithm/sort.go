@@ -7,6 +7,7 @@ func InsertSort(a []int, n int) []int {
 	}
 	for i := 1; i < n; i++ {
 		v := a[i]
+		// 查找插入的位置
 		j := i - 1
 		for ; j >= 0; j-- {
 			if a[j] > v {

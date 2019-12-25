@@ -2,7 +2,7 @@ package algorithm
 
 import "fmt"
 
-const total = 10
+const total = 13
 
 ///约瑟夫环的问题 total个数，从from开始，到count之后，count出，
 ///直至所有数都出
@@ -49,6 +49,12 @@ loop:
 	goto loop
 }
 
+/**
+约瑟夫 数组实现
+1、初始化数组，默认值0
+2、从from开始，遇到未做过标识的数，+1报数
+3、遇到count时，取出此时的数，重新开始报数
+*/
 func JOSECircleByArray(from, count int) {
 	array := [total]int{}
 	var outCount, index int
@@ -67,10 +73,4 @@ func JOSECircleByArray(from, count int) {
 		}
 		from = 1
 	}
-	for i := 0; i < total; i++ {
-		if array[i] == 0 {
-			fmt.Printf("The last one is:%d", i)
-		}
-	}
-
 }

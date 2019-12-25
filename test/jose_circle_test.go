@@ -10,5 +10,5 @@ func TestJOSECircleByLink(t *testing.T) {
 }
 
 func TestJOSECircleByArray(t *testing.T) {
-	algorithm.JOSECircleByArray(2, 4)
+	algorithm.JOSECircleByArray(1, 3)
 }
