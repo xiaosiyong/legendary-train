@@ -1,10 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
-func main()  {
-	fmt.Println("Hello~module")
-	a := []int{1,3,4,5}
-	fmt.Println(a[:len(a)-1])
-	fmt.Println(a[:0])
+func main() {
+	go func() {
+
+		for {
+
+			fmt.Println("1 seconds past")
+			time.Sleep(20 * time.Millisecond)
+
+		}
+
+	}()
+	t := time.NewTicker(2 * time.Second)
+	for {
+		select {
+		case <-t.C:
+			fmt.Println("2 seconds past")
+		}
+	}
+
 }
