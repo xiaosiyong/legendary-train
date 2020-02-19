@@ -87,3 +87,9 @@ func TestLeetcode01(t *testing.T) {
 	m := []int{3, 2, 4}
 	fmt.Println(leetcode.TwoSum2(m, 6))
 }
+
+func TestRotateSlice(t *testing.T){
+	m := [][]int{{3, 2, 4},{1,3,4},{1,2}}
+	fmt.Println(m[0][1])
+	fmt.Println(len(m[0]))
+}
