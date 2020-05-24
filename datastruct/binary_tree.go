@@ -8,6 +8,7 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
+//深度优先--前序遍历
 func (t *TreeNode) PreOrderPrint() {
 	if t != nil {
 		fmt.Println(t.Val)
@@ -18,6 +19,7 @@ func (t *TreeNode) PreOrderPrint() {
 	}
 }
 
+//深度优先--后序遍历
 func (t *TreeNode) PostOrderPrint() {
 	if t != nil {
 		if t.Left != nil {
@@ -33,6 +35,7 @@ func (t *TreeNode) PostOrderPrint() {
 	}
 }
 
+//深度优先--中序遍历
 func (t *TreeNode) InOrderPrint() {
 	if t != nil {
 		if t.Left != nil {
@@ -48,23 +51,22 @@ func (t *TreeNode) InOrderPrint() {
 	}
 }
 
-func (t *TreeNode) ByLevelPrint() {
-	for t != nil {
-		fmt.Println(t.Val)
+func (t *TreeNode) BFSPrint() [][]int {
+	var result [][]int
+	if t != nil {
+		dfsHelper(0, t, &result)
 	}
-	dfsPrinter(t)
+	return result
 }
 
-func dfsPrinter(t *TreeNode) {
-	if t != nil {
-		fmt.Println(t.Val)
-
+func dfsHelper(l int, t *TreeNode, r *[][]int) {
+	if t == nil {
+		return
 	}
-	if t.Left != nil {
-		dfsPrinter(t.Left)
+	if len(*r) < l+1 {
+		*r = append(*r, make([]int, 0))
 	}
-	if t.Right != nil {
-		dfsPrinter(t.Right)
-	}
-
+	(*r)[l] = append((*r)[l], t.Val)
+	dfsHelper(l+1, t.Left, r)
+	dfsHelper(l+1, t.Right, r)
 }

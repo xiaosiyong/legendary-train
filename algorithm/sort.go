@@ -64,10 +64,10 @@ func MergeSort(a []int) []int {
 	m := len(a) / 2
 	l := MergeSort(a[:m])
 	r := MergeSort(a[m:])
-	return Merge(l, r)
+	return merge(l, r)
 }
 
-func Merge(left, right []int) (result []int) {
+func merge(left, right []int) (result []int) {
 	l, r := 0, 0
 	for l < len(left) && r < len(right) {
 		if left[l] > right[r] {

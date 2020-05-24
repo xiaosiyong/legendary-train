@@ -49,5 +49,6 @@ func TestBinaryTree(t *testing.T) {
 	fmt.Println("-----------------")
 	t1.InOrderPrint()
 	fmt.Println("-----------------")
-	t1.PreOrderPrint()
+	fmt.Println(t1.BFSPrint())
+
 }

@@ -15,3 +15,17 @@ func TestGetMaxSum(t *testing.T) {
 	fmt.Println(algorithm.GetMaxSum(t2))
 	fmt.Println(algorithm.GetMaxSum2(t2))
 }
+
+func TestGetMax(t *testing.T) {
+	a := [][]int{
+		{1, 1, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 1, 1, 1, 1},
+		{0, 0, 0, 0, 0},
+		{0, 0, 1, 0, 0},
+	}
+	algorithm.Step1(a)
+	algorithm.Step2(a)
+	fmt.Println(algorithm.Step3(a))
+
+}

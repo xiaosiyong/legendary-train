@@ -28,3 +28,61 @@ func FindItems(a []int) []int {
 	}
 	return r
 }
+
+/***
+matrix = [
+[1,3,5,7],
+[10,11,16,20],
+[23,30,34,50]
+]
+target = 3 输出 true
+target = 2 输出 false
+*/
+func FindItemFromMatrix(a [][]int, s int) bool {
+	l := len(a)
+	if l < 1 {
+		return false
+	}
+	if l == 1 {
+
+	}
+
+	i, r := findIndex(a, s, 0, len(a))
+	if r {
+		return true
+	}
+	if i == -1 {
+		return false
+	}
+	i = binarySearch(a[i], 0, len(a[i]), s)
+	return i != -1
+}
+
+func findIndex(a [][]int, f, s, e int) (int, bool) {
+
+	m := s + (e-s)>>1
+	if a[m][0] == f {
+		return m, true
+	}
+	return 0, false
+}
+
+func binarySearch(a []int, s, e, f int) int {
+	if s >= e {
+		return -1
+	}
+	if e >= len(a) {
+		return -1
+	}
+	if a[s] > f || a[e] < f {
+		return -1
+	}
+	m := s + (e-s)>>1
+	if a[m] == f {
+		return m
+	} else if a[m] > f {
+		return binarySearch(a, s, m, f)
+	} else {
+		return binarySearch(a, m+1, e, f)
+	}
+}

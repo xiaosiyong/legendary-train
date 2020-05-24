@@ -7,13 +7,6 @@ type ArrayQueue struct {
 	Tail  int
 }
 
-type CircleQueue struct {
-	Size  int
-	Items []string
-	Head  int
-	Tail  int
-}
-
 func InitQueue(l int) *ArrayQueue {
 	return &ArrayQueue{
 		Size:  l,
@@ -46,6 +39,13 @@ func (a *ArrayQueue) Dequeue() string {
 	s := a.Items[a.Head]
 	a.Head++
 	return s
+}
+
+type CircleQueue struct {
+	Size  int
+	Items []string
+	Head  int
+	Tail  int
 }
 
 func InitCircleQueue(l int) *CircleQueue {

@@ -32,3 +32,10 @@ func (a *ArrayStack) Pop() string {
 	a.Count--
 	return item
 }
+
+func (a *ArrayStack) Peek() string {
+	if a.Count == 0 {
+		return ""
+	}
+	return a.Items[a.Count-1]
+}
