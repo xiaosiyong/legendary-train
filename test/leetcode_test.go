@@ -100,5 +100,17 @@ func TestLeetCode84(t *testing.T) {
 	//fmt.Println(leetcode.LargestRectangleArea2(a))
 	//fmt.Println(leetcode.LargestRectangleArea3(a))
 	fmt.Println(leetcode.LargestRectangleArea4(a))
+}
+
+func TestLeetCode85(t *testing.T) {
+	a := [][]int{
+		{1, 0, 0, 0, 1},
+		{1, 1, 0, 0, 1},
+		{1, 1, 1, 0, 1},
+		{1, 1, 0, 1, 1},
+		{1, 0, 1, 0, 1},
+	}
+	fmt.Println(leetcode.MaximalRectangle1(a))
+	fmt.Println(leetcode.MaximalRectangle2(a))
 
 }
