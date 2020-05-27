@@ -110,7 +110,8 @@ func TestLeetCode85(t *testing.T) {
 		{1, 1, 0, 1, 1},
 		{1, 0, 1, 0, 1},
 	}
-	fmt.Println(leetcode.MaximalRectangle1(a))
-	fmt.Println(leetcode.MaximalRectangle2(a))
+	//fmt.Println(leetcode.MaximalRectangle1(a))
+	//fmt.Println(leetcode.MaximalRectangle2(a))
+	fmt.Println(leetcode.MaximalRectangle3(a))
 
 }

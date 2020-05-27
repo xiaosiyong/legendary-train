@@ -50,3 +50,61 @@ func MaximalRectangle2(m [][]int) int {
 	}
 	return max
 }
+
+func MaximalRectangle3(s [][]int) int {
+	var a int
+	if len(s) > 0 {
+		m := len(s)
+		n := len(s[0])
+		l, r, h := make([]int, n), make([]int, n), make([]int, n)
+		for i := 0; i < n; i++ {
+			r[i] = n
+			l[i] = -1
+		}
+		for i := 0; i < m; i++ {
+
+			//update height
+			for j := 0; j < n; j++ {
+				if s[i][j] == 1 {
+					h[j] += 1
+				} else {
+					h[j] = 0
+				}
+
+			}
+			//update left
+			cl := -1
+			for j := 0; j < n; j++ {
+				if s[i][j] == 1 {
+					if l[j] < cl {
+						l[j] = cl
+					}
+				} else {
+					l[j] = -1
+					cl = j
+				}
+			}
+			//update right
+			cr := n
+			for j := n - 1; j >= 0; j-- {
+				if s[i][j] == 1 {
+					if r[j] > cr {
+						r[j] = cr
+					}
+				} else {
+					r[j] = n
+					cr = j
+				}
+			}
+			//update area
+			for j := 0; j < n; j++ {
+				t := (r[j] - l[j] - 1) * h[j]
+				if a < t {
+					a = t
+				}
+			}
+
+		}
+	}
+	return a
+}
