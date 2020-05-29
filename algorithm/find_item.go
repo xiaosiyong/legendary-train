@@ -86,3 +86,41 @@ func binarySearch(a []int, s, e, f int) int {
 		return binarySearch(a, m+1, e, f)
 	}
 }
+
+/***
+给你一个数组，求一个k值，使得前k个数的方差 + 后面n-k个数的方差最小 ，时间复杂度可以到O(n)。
+如果不考虑方差的概念，这题可以简化为 “给一个数组，求一个k值，使得前k个数的和 + 后面n-k个数的和最小”。
+举例， 如 nums = [1,3,2,4]，我们可以先从左向右求出各个子段和 [1,4,6,10]，然后再从右向左求出各个子段和 [4,6,9,10]，我们发现对应的子段和为 1 -> 9, 4 -> 6, 6 -> 4。因此，我们只需要正反遍历数组两次，就可以求得结果。
+时间复杂度：O(n)，空间复杂度 O(n)
+*/
+func FindIndex(a []int) int {
+	var r int
+	l := len(a)
+	if l > 0 {
+		var left, right []int
+		var sum, squareSum int
+		for i := 0; i < l; i++ {
+			sum += a[i]
+			squareSum += a[i] * a[i]
+			left[i] = (squareSum / (i + 1)) - (sum / (i + 1)) ^ 2
+		}
+		sum = 0
+		squareSum = 0
+		for j := l - 1; j > 0; j-- {
+			sum += a[j]
+			squareSum += a[j] ^ 2
+			right[j] = (squareSum / (j - 1)) - (sum / (j - 1)) ^ 2
+		}
+		r = left[0] + right[0]
+		var t int
+		for i := 0; i < l-1; i++ {
+			if r > left[i]+right[i+1] {
+				r = left[i] + right[i+1]
+				t = i + 1
+			}
+		}
+		return t
+
+	}
+	return r
+}

@@ -14,3 +14,15 @@ func TestFindSqr(t *testing.T) {
 	fmt.Println(algorithm.FindItems(a))
 
 }
+
+func TestFindItem(t *testing.T) {
+	a := [][]int{
+		{1, 1, 1, 0, 0},
+		{0, 0, 1, 0, 0},
+		{0, 1, 1, 1, 1},
+		{0, 0, 1, 0, 0},
+		{0, 0, 1, 0, 1},
+	}
+	//fmt.Println(algorithm.GetIslandQuantity(a))
+	fmt.Println(algorithm.GetContinuousQuantity(a))
+}
