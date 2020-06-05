@@ -113,5 +113,9 @@ func TestLeetCode85(t *testing.T) {
 	//fmt.Println(leetcode.MaximalRectangle1(a))
 	//fmt.Println(leetcode.MaximalRectangle2(a))
 	fmt.Println(leetcode.MaximalRectangle3(a))
+}
 
+func TestLeetCode410(t *testing.T) {
+	a := []int{7, 2, 5, 10, 8}
+	fmt.Println(leetcode.SplitArray2(a, 2))
 }
