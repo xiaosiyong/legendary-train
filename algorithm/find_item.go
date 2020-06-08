@@ -124,17 +124,18 @@ func FindIndex(a []int) int {
 	}
 	return r
 }
+
 /***
 找出数组中出现次数超过一半的数
- */
-func FindMoreThanHalfItem(a []int)int{
+*/
+func FindMoreThanHalfItem(a []int) int {
 	var m int
 	if len(a) > 0 {
 		c := a[0]
-		for i:=0;i<len(a);i++{
+		for i := 0; i < len(a); i++ {
 			if a[i] == c {
 				m++
-			}else{
+			} else {
 				m--
 				if m <= 0 {
 					c = a[i]
@@ -145,4 +146,9 @@ func FindMoreThanHalfItem(a []int)int{
 		return c
 	}
 	return m
+}
+
+func FindItemInArray(a []int) bool {
+
+	return false
 }

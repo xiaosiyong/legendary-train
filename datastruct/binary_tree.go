@@ -9,7 +9,8 @@ type TreeNode struct {
 }
 
 //深度优先--前序遍历
-func (t *TreeNode) PreOrderPrint() {
+func (T *TreeNode) PreOrderPrint() {
+	t := T
 	if t != nil {
 		fmt.Println(t.Val)
 		l := t.Left
@@ -20,7 +21,8 @@ func (t *TreeNode) PreOrderPrint() {
 }
 
 //深度优先--后序遍历
-func (t *TreeNode) PostOrderPrint() {
+func (T *TreeNode) PostOrderPrint() {
+	t := T
 	if t != nil {
 		if t.Left != nil {
 			l := t.Left
@@ -36,7 +38,8 @@ func (t *TreeNode) PostOrderPrint() {
 }
 
 //深度优先--中序遍历
-func (t *TreeNode) InOrderPrint() {
+func (T *TreeNode) InOrderPrint() {
+	t := T
 	if t != nil {
 		if t.Left != nil {
 			l := t.Left
@@ -52,10 +55,10 @@ func (t *TreeNode) InOrderPrint() {
 }
 
 //广度优先
-func (t *TreeNode) BFSPrint() [][]int {
+func (T *TreeNode) BFSPrint() [][]int {
 	var result [][]int
-	if t != nil {
-		dfsHelper(0, t, &result)
+	if T != nil {
+		dfsHelper(0, T, &result)
 	}
 	return result
 }
@@ -72,7 +75,8 @@ func dfsHelper(l int, t *TreeNode, r *[][]int) {
 	dfsHelper(l+1, t.Right, r)
 }
 
-func Insert(t *TreeNode, data int) {
+func (T *TreeNode) Insert(data int) {
+	t := T
 	if t == nil {
 		t = &TreeNode{Val: data}
 		return
@@ -96,7 +100,8 @@ func Insert(t *TreeNode, data int) {
 	}
 }
 
-func Find(t *TreeNode, data int) *TreeNode {
+func (T *TreeNode) Find(data int) *TreeNode {
+	t := T
 	var r *TreeNode
 	for t != nil {
 		if data > t.Val {
@@ -111,8 +116,8 @@ func Find(t *TreeNode, data int) *TreeNode {
 	return r
 }
 
-func Delete(t *TreeNode, data int) {
-	p := t
+func (T *TreeNode) Delete(data int) {
+	p := T
 	var pp *TreeNode
 	for p != nil && p.Val != data {
 		pp = p
@@ -144,7 +149,7 @@ func Delete(t *TreeNode, data int) {
 		child = p.Right
 	}
 	if pp == nil {
-		t = child
+
 	} else if pp.Left == p {
 		pp.Left = child
 	} else {
