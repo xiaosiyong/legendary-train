@@ -3,7 +3,7 @@ package algorithm
 import "fmt"
 
 /***
-// 调用方式：
+// 数组全排列 调用方式：
 // int[]a = a={1, 2, 3, 4}; printPermutations(a, 4, 4);
 // k表示要处理的子数组的数据个数
 */

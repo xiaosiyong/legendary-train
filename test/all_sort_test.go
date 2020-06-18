@@ -6,6 +6,6 @@ import (
 )
 
 func TestAllSort(t *testing.T) {
-	a := []int{1, 2, 3, 4}
+	a := []int{3, 2, 5, 9}
 	algorithm.PrintPermutations(a, 4, 4)
 }
