@@ -44,13 +44,13 @@ func BM(mainBytes []byte, searchBytes []byte, mainL int, searchL int) int {
 }
 
 //预处理串
-func generateBc(searchBytes []byte, hash [256]int) {
+func generateBc(s string, hash [256]int) {
 	for i := 0; i < size; i++ {
 		hash[i] = -1
 	}
-	for i := 0; i < len(searchBytes); i++ {
-		ascii := int(searchBytes[i])
-		hash[ascii] = i
+	//i index v ascii值
+	for i,v := range s {
+		hash[v] = i
 	}
 }
 

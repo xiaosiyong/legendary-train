@@ -44,3 +44,19 @@ func GetMaxSum2(array []int) int {
 	}
 	return 0
 }
+
+
+func IsExistNSum(a []int,m int)bool{
+	if a == nil {
+		return false
+	}
+	return false
+
+}
+
+func sum(a []int,n,m int)bool{
+	if n <= 0 || m <=0 {
+		return false
+	}
+	return false
+}

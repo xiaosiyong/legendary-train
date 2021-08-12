@@ -75,3 +75,11 @@ func quickSelect(nums []int,s,e,k int)int{
 	}
 
 }
+
+
+
+
+
+
+
+

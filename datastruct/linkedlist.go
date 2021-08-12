@@ -80,6 +80,27 @@ func (list *ItemLinkedList) Insert(i int, item Item) bool {
 	}
 }
 
+func (p *Node)reverse()*Node{
+	var rHead,pPrev *Node
+	pNode := p
+	for pNode != nil {
+		pNext := pNode.next
+		if pNext == nil {
+			rHead = pNode
+			return rHead
+		}
+		pNode.next = pPrev
+		pPrev = pNode
+		pNode = pNext
+
+	}
+	return rHead
+}
+
+
+
+
+
 func (list *ItemLinkedList) Reverse() {
 	p := list.head
 	q := list.head.next

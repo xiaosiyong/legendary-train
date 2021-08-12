@@ -156,3 +156,27 @@ func (T *TreeNode) Delete(data int) {
 		pp.Right = child
 	}
 }
+
+//根据中序和前序遍历输出二叉树
+func BuildTree(p,in []int)*TreeNode {
+	l := len(p)
+	m := make(map[int]int,l)
+	for i:=0;i<l;i++{
+		m[in[i]] = i
+	}
+	return recursive(0,0,l-1,p,m)
+}
+
+func recursive(rootidx,lidx,ridx int,p []int,m map[int]int) *TreeNode {
+	if lidx > ridx {
+		return nil
+	}
+	t := &TreeNode{
+		Val: p[0],
+	}
+	idx := m[p[0]]
+	t.Left = recursive(rootidx+1,lidx,idx-1,p,m)
+	t.Right = recursive(rootidx+(idx-1-lidx+1)+1,idx+1,ridx,p,m)
+	return t
+}
+
