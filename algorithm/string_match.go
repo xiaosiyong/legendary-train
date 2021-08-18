@@ -10,9 +10,9 @@ func BM(mainBytes []byte, searchBytes []byte, mainL int, searchL int) int {
 	if searchL >= mainL {
 		index = -1
 	}
-	hash := [256]int{}            //记录模式串中每个字符最后出现的位置
-	generateBc(searchBytes, hash) //生成坏字符哈希表
-	var i int                     //i表示主串与模式串对齐的第一个字符
+	hash := [256]int{}                    //记录模式串中每个字符最后出现的位置
+	generateBc(string(searchBytes), hash) //生成坏字符哈希表
+	var i int                             //i表示主串与模式串对齐的第一个字符
 
 	suffix := make([]int, mainL)
 	prefix := make([]bool, mainL)
@@ -49,7 +49,7 @@ func generateBc(s string, hash [256]int) {
 		hash[i] = -1
 	}
 	//i index v ascii值
-	for i,v := range s {
+	for i, v := range s {
 		hash[v] = i
 	}
 }
