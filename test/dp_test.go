@@ -13,3 +13,14 @@ func TestCoinChanges(t *testing.T) {
 	maxPrice := algorithm.StockProfit([]int{11, 8, 9, 16, 20})
 	fmt.Println(maxPrice)
 }
+
+func TestMaxVolumeInBag(t *testing.T) {
+	fmt.Println(algorithm.MaxV)
+	algorithm.MaxValueInBag(0, 0)
+	fmt.Println(algorithm.MaxV)
+
+}
+
+func TestKnapsack(t *testing.T) {
+	fmt.Println(algorithm.Knapsack(algorithm.Items, algorithm.Count, algorithm.Vol))
+}
