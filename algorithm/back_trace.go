@@ -2,6 +2,10 @@ package algorithm
 
 import "math"
 
+/*
+回溯算法
+*/
+
 var (
 	Items      = []int{2, 2, 4, 6, 3}
 	ItemsValue = []int{3, 4, 8, 9, 6}
@@ -11,6 +15,7 @@ var (
 	_m         = [5][10]bool{}
 )
 
+//背包最大容量
 func MaxVolumeInBag(i, cw int) {
 	if i == Count || cw == Vol {
 		if cw > MaxV {
@@ -28,6 +33,7 @@ func MaxVolumeInBag(i, cw int) {
 	}
 }
 
+//背包最大值
 func MaxValueInBag(i, cw, cv int) {
 	if i == Count || cw == Vol {
 		if cw > MaxV {

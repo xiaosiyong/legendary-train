@@ -16,7 +16,7 @@ func TestCoinChanges(t *testing.T) {
 
 func TestMaxVolumeInBag(t *testing.T) {
 	fmt.Println(algorithm.MaxV)
-	algorithm.MaxValueInBag(0, 0)
+	algorithm.MaxValueInBag(0, 0, 0)
 	fmt.Println(algorithm.MaxV)
 
 }

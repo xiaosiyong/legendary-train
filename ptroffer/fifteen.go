@@ -3,6 +3,9 @@ package main
 import "fmt"
 
 func main() {
+	t := []int{1, 1, 3, 4, 5, 2}
+	fmt.Println(repeatedItem(t, 6))
+	fmt.Println()
 	fmt.Println(numberOf1(5))
 	fmt.Println(numberOf2(5))
 	fmt.Println(numberOf2(8))

@@ -21,19 +21,17 @@ func PrintPermutations(data []int, n, k int) {
 	}
 }
 
-
-
-func AllSort(d []int,n,k int){
+func AllSort(d []int, n, k int) {
 	if k == 1 {
-		for i := 0;i<n;i++{
-			fmt.Print(d[i],"")
+		for i := 0; i < n; i++ {
+			fmt.Print(d[i], "")
 		}
 		fmt.Println()
 	}
-	for i:=0;i<k;i++{
-		d[i],d[k-1] = d[k-1],d[i]
-		AllSort(d,n,k-1)
-		d[i],d[k-1] = d[k-1],d[i]
+	for i := 0; i < k; i++ {
+		d[i], d[k-1] = d[k-1], d[i]
+		AllSort(d, n, k-1)
+		d[i], d[k-1] = d[k-1], d[i]
 	}
 
 }

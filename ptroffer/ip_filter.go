@@ -10,9 +10,10 @@ type ip struct {
 
 func IpFilter(ip string, timestamp int64) bool {
 	m := sync.Map{}
-	v, ok := m.Load(ip)
+	_, ok := m.Load(ip)
 	if !ok {
 		return true
 	}
+	return false
 
 }
