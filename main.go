@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"legendaryTrain/algorithm"
 	"math/rand"
 	"time"
 )
@@ -33,6 +34,8 @@ func main() {
 
 	err := errors.New("error hahh")
 	fmt.Println(fmt.Sprintf("error:%s", err))
+
+	algorithm.FindAllSuShu(100)
 
 	//go func() {
 	//
