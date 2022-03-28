@@ -64,3 +64,9 @@ func findItemCount(a []int, min, max int) int {
 	}
 	return c
 }
+
+//二位数组中出现的元素
+func existInArray(a [][]int, target int) bool {
+	row := len(a[0])
+	return false
+}
