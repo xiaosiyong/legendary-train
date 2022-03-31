@@ -67,6 +67,19 @@ func findItemCount(a []int, min, max int) int {
 
 //二位数组中出现的元素
 func existInArray(a [][]int, target int) bool {
-	row := len(a[0])
+	row := len(a)
+	col := len(a[0])
+	var i int
+	j := col - 1
+	for i < row && j >= 0 {
+		if a[i][j] == target {
+			return true
+		}
+		if a[i][j] > target {
+			j--
+		} else {
+			i++
+		}
+	}
 	return false
 }
