@@ -2,6 +2,9 @@ package leetcode
 
 import "legendaryTrain/algorithm"
 
+/*
+给定一个整数数组以及一个数，判断是否存在两数之和等于目标数，如果存在，返回两个数
+*/
 func twoSum(nums []int, target int) []int {
 	var r []int
 	if len(nums) > 1 {
